@@ -6,6 +6,17 @@ var bike1 = Bike.GetIfInInventory("Spark", "Scott");
 var bikeModel1 = bike1?.Model;
 Console.WriteLine(bikeModel1 ?? "Bike not found in inventory.");
 
+//before C# 14
+if (bike1 is not null)
+{
+    bike1.PriceChanged += (price, model) =>
+    {
+        Console.WriteLine($"The new price for {model} is {price}.");
+    };
+    bike1.Price = 3000;
+}
+
+//with C# 14 nullable assignment
 bike1?.PriceChanged += (price, model) =>
 {
     Console.WriteLine($"The new price for {model} is {price}.");

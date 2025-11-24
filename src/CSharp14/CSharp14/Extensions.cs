@@ -64,7 +64,7 @@ public static class EnumerableExtensions
     
     extension<T>(IEnumerable<T> source)
     {
-        public IEnumerable<T> Concat1(IEnumerable<T> second)
+        public IEnumerable<T> Concat(IEnumerable<T> second)
         {
             foreach (var item in source)
                 yield return item;
