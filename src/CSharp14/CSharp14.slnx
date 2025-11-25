@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="CSharp14/CSharp14.csproj" />
+  <Project Path="RuntimeAsync/RuntimeAsync.csproj" />
+  <Project Path="Union/Union.csproj" />
 </Solution>
