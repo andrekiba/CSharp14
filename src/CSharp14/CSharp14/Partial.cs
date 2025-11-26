@@ -6,18 +6,18 @@ namespace CSharp14;
 // BikeConfig.cs
 public partial class BikeConfig
 {
-    public BikeConfig(string configPath)
+    public BikeConfig(string config)
     {
-        Initialize(configPath);
+        Initialize(config);
     }
     
-    private partial void Initialize(string configPath);
+    private partial void Initialize(string config);
 }
 
 // BikeConfig.g.cs
 public partial class BikeConfig
 {
-    private partial void Initialize(string configPath)
+    private partial void Initialize(string config)
     {
         // Generated code
     }
@@ -34,7 +34,7 @@ public partial class BikeConfig
     public partial event EventHandler BikeConfigReloaded;
     
     // Partial constructor
-    public partial BikeConfig(string configPath);
+    public partial BikeConfig(string config);
 }
 
 // BikeConfig.g.cs
@@ -53,7 +53,7 @@ public partial class BikeConfig
     }
     
     // Implementation for partial constructor
-    public partial BikeConfig(string configPath)
+    public partial BikeConfig(string config)
     {
         // Generated code
     }

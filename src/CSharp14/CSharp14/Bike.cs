@@ -21,9 +21,11 @@ public class Bike(string model, string brand)
         set
         {
             price = value;
-            PriceChanged?.Invoke(price, Model);
+            PriceChanged?.Invoke(price, Model, out _);
         }
     }
+
+    //public IReadOnlyList<Bike> OtherBikes => field ??= []; 
     
     /*
      * The field keyword is contextual, meaning it's only available inside the get and set methods of your auto-implemented properties.
@@ -32,7 +34,7 @@ public class Bike(string model, string brand)
      */
 
     public event PriceChangedEventHandler? PriceChanged;
-    public delegate void PriceChangedEventHandler(double price, string model);
+    public delegate void PriceChangedEventHandler(double price, string model, out bool success);
 
     public static Bike? GetIfInInventory(string model, string brand)
     {
