@@ -1,5 +1,6 @@
 namespace CSharp14;
 
+#region Before C# 13
 public class BikeStock
 {
     readonly object lockObject = new();
@@ -15,7 +16,9 @@ public class BikeStock
     }
     public int BikesInStock => bikesInStock;
 }
+#endregion
 
+#region With C# 13
 public class BikeStockWithLock
 {
     readonly Lock lockObject = new();
@@ -37,7 +40,6 @@ public class BikeStockWithLock
 }
 
 /*
- 
 public sealed class Lock 
 {
    public Lock();
@@ -69,5 +71,5 @@ finally
 {
    scope.Dispose();
 }
-
 */
+#endregion

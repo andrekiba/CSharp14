@@ -10,9 +10,10 @@ Console.WriteLine(bikeModel1 ?? "Bike not found in inventory.");
 /*
 if (bike1 is not null)
 {
-    bike1.PriceChanged += (price, model) =>
+    bike1.PriceChanged += (decimal price, string model, out bool success) =>
     {
         Console.WriteLine($"The new price for {model} is {price}.");
+        success = true;
     };
     bike1.Price = 3000;
 }
@@ -20,12 +21,18 @@ if (bike1 is not null)
 #endregion
 
 #region with C# 14 nullable assignment
-bike1?.PriceChanged += (double price, string model, out bool success) =>
+bike1?.PriceChanged += (decimal price, string model, out bool success) =>
 {
     Console.WriteLine($"The new price for {model} is {price}.");
     success = true;
 };
 bike1?.Price = 3000;
+
+#region Lambda without explicit types
+// now support ref, in, out, scoped, and ref readonly parameter modifiers without needing to specify parameter types
+// doesn't work with Action<>, Func<> and params
+#endregion
+
 #endregion
 
 #endregion

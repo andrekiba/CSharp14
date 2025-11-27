@@ -12,7 +12,7 @@ public static class BikeExtensions
             bike.Price -= discountAmount;
         }
         
-        public double DiscountedPrice => bike.Price * 0.8;
+        public decimal DiscountedPrice => bike.Price * 0.8m;
         
         // Extension properties are computed unless you deliberately provision storage.
         public bool IsTestBike

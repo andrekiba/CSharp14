@@ -14,8 +14,8 @@ public class Bike(string model, string brand)
     public string Model { get; } = model;
     public string Brand { get; } = brand;
 
-    double price;
-    public double Price
+    decimal price;
+    public decimal Price
     {
         get => price;
         set
@@ -25,7 +25,7 @@ public class Bike(string model, string brand)
         }
     }
 
-    //public IReadOnlyList<Bike> OtherBikes => field ??= []; 
+    //public IReadOnlyList<Bike> OtherBikes => field ??= [new Bike("Scalpel", "Cannondale"), new Bike("Dogma", "Pinarello")]; 
     
     /*
      * The field keyword is contextual, meaning it's only available inside the get and set methods of your auto-implemented properties.
@@ -34,7 +34,7 @@ public class Bike(string model, string brand)
      */
 
     public event PriceChangedEventHandler? PriceChanged;
-    public delegate void PriceChangedEventHandler(double price, string model, out bool success);
+    public delegate void PriceChangedEventHandler(decimal price, string model, out bool success);
 
     public static Bike? GetIfInInventory(string model, string brand)
     {

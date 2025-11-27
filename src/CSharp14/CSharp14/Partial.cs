@@ -6,18 +6,52 @@ namespace CSharp14;
 // BikeConfig.cs
 public partial class BikeConfig
 {
+    // No partial constructors
     public BikeConfig(string config)
     {
         Initialize(config);
     }
     
+    // Partial method declaration needed, like a sort of interface
     private partial void Initialize(string config);
+    
+    // In case an event accessor has to call any generated code,
+    // you must define the event accessor methods and call the generated method
+    EventHandler? bikeConfigChanged;
+    public event EventHandler BikeConfigChanged
+    {
+        add
+        {
+            // Call generated method
+            OnConfigChangedAdded(value);
+            bikeConfigChanged += value;
+        }
+        remove
+        {
+            // Call generated method
+            OnConfigChangedRemoved(value);
+            bikeConfigChanged -= value;
+        }
+    }
+    
+    private partial void OnConfigChangedAdded(EventHandler handler);
+    private partial void OnConfigChangedRemoved(EventHandler handler);
 }
 
 // BikeConfig.g.cs
 public partial class BikeConfig
 {
     private partial void Initialize(string config)
+    {
+        // Generated code
+    }
+    
+    private partial void OnConfigChangedAdded(EventHandler handler)
+    {
+        // Generated code
+    }
+
+    private partial void OnConfigChangedRemoved(EventHandler handler)
     {
         // Generated code
     }
@@ -31,8 +65,8 @@ public partial class BikeConfig
 public partial class BikeConfig
 {
     // Partial event
-    public partial event EventHandler BikeConfigReloaded;
-    
+    public partial event EventHandler BikeConfigChanged;
+
     // Partial constructor
     public partial BikeConfig(string config);
 }
@@ -41,17 +75,17 @@ public partial class BikeConfig
 public partial class BikeConfig
 {
     // Implementation for partial event
-    EventHandler? configReloaded;
-    public partial event EventHandler BikeConfigReloaded
+    EventHandler? bikeConfigChanged;
+    public partial event EventHandler BikeConfigChanged
     {
         add =>
             // Generated code
-            configReloaded += value;
+            bikeConfigChanged += value;
         remove =>
             // Generated code
-            configReloaded -= value;
+            bikeConfigChanged -= value;
     }
-    
+
     // Implementation for partial constructor
     public partial BikeConfig(string config)
     {
