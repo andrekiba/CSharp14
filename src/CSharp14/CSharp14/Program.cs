@@ -1,4 +1,5 @@
-﻿using CSharp14;
+﻿using System.Numerics;
+using CSharp14;
 
 #region Nullable assignment
 
@@ -49,6 +50,25 @@ var empty = bikes.IsEmpty;
 bike.IsTestBike = true;
 Console.WriteLine(bike.IsTestBike);
 */
+
+#endregion
+
+#region Span<T> implicit conversion
+
+T CalculateMedian<T>(Span<T> values) where T : INumber<T>
+{
+    values.Sort();
+    var mid = values.Length / 2;
+    if (values.Length % 2 == 0)
+    {
+        return (values[mid - 1] + values[mid]) / T.CreateChecked(2);
+    }
+
+    return values[mid];
+}
+
+//Array is converted to Span using explicit type
+var median = CalculateMedian<int>([5, 3, 8, 1, 4]);
 
 #endregion
 

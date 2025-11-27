@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Async/Async.csproj" />
   <Project Path="CSharp14/CSharp14.csproj" />
   <Project Path="Extension/Extension.csproj" />
   <Project Path="RuntimeAsync/RuntimeAsync.csproj" />
